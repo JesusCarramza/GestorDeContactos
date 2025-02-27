@@ -1,3 +1,23 @@
+import os
+import time
+
+def agregar_contacto():
+    print("Agregar contacto")
+    nombre = input("Nombre: ")
+    telefono = input("Telefono: ")
+    email = input("Email: ")
+
+    contacto = {
+        "id": len(agenda) + 1,
+        "nombre": nombre,
+        "telefono": telefono,
+        "email": email
+    }
+
+    agenda.append(contacto)
+
+    print("Contacto agregado")
+
 def menu():
     print("Bienvenido a la agenda de contactos")
     print("1. Agregar contacto")
@@ -9,9 +29,27 @@ def menu():
     print("7. Guardar contactos en archivo")
     print("8. Salir")
 
-def main():
+def limpiar_pantalla():
+    time.sleep(2)
+    if system == "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
 
+def main():
+    global agenda
+    agenda = []
+    global system
+    if os.name == "nt":
+        system = "Windows"
+    else:
+        system = "Linux"
     menu()
+    while True:
+        opcion = input("Opcion: ")
+        if opcion == "1":
+            agregar_contacto()
+            limpiar_pantalla()
 
 
 if __name__ == "__main__":
