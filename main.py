@@ -14,6 +14,19 @@ def agregar_contacto():
         "email": email
     }
 
+def ver_contactos():
+    print("\nLista de contactos:")
+    if not agenda:
+        print("No hay contactos guardados.")
+    else:
+        for contacto in agenda:
+            print(f"ID: {contacto['id']}")
+            print(f"Nombre: {contacto['nombre']}")
+            print(f"Teléfono: {contacto['telefono']}")
+            print(f"Email: {contacto['email']}")
+            print("-" * 20)
+
+
     agenda.append(contacto)
 
     print("Contacto agregado")
@@ -50,6 +63,8 @@ def main():
         if opcion == "1":
             agregar_contacto()
             limpiar_pantalla()
+        elif opcion == "2":
+            ver_contactos()
 
 
 if __name__ == "__main__":
